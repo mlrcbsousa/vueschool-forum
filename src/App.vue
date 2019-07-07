@@ -6,6 +6,7 @@
 </template>
 
 <script>
+const name = 'Manuel'
 export default {
   name: 'app'
 }
