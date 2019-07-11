@@ -1,18 +1,18 @@
 <template>
   <div class="col-full">
     <h1>Welcome to the Forum</h1>
-    <ThreadList :threads="threads" />
+    <ForumList :forums="forums" />
   </div>
 </template>
 
 <script>
 import sourceData from '@/data';
-import ThreadList from '&/ThreadList';
+import ForumList from '&/ForumList';
 console.log(sourceData);
 
 export default {
   components: {
-    ThreadList
+    ForumList
   },
 
   data () {
