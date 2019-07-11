@@ -12,7 +12,7 @@
 
     <div class="threads-count">
       <p class="count">{{ threadsCount }}</p>
-      {{threadsCount === 1 ? 'thread' : 'threads' }}
+      {{ threadsCount === 1 ? 'thread' : 'threads' }}
     </div>
 
     <div class="last-thread">
@@ -37,7 +37,9 @@ export default {
 
   computed: {
     threadsCount () {
-      return Object.keys(this.forum.threads).length
+      return this.forum.threads
+        ? Object.keys(this.forum.threads).length
+        : 0
     }
   }
 };

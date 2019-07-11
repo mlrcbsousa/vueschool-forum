@@ -1,26 +1,25 @@
 <template>
-  <div class="col-full">
+  <div class="col-full push-top">
     <h1>Welcome to the Forum</h1>
-    <ForumList :forums="forums" />
+    <CategoryList :categories="categories" />
   </div>
 </template>
 
 <script>
 import sourceData from '@/data';
-import ForumList from '&/ForumList';
+import CategoryList from '&/CategoryList';
 console.log(sourceData);
 
 export default {
   components: {
-    ForumList
+    CategoryList
   },
 
   data () {
     return {
-      threads: Object.values(sourceData.threads),
-      posts: sourceData.posts,
-      users: sourceData.users
+      categories: Object.values(sourceData.categories)
     };
   }
+
 };
 </script>
