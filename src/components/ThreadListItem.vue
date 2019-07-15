@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import sourceData from '@/data';
+;
 // import AppDate from './AppDate';
 
 export default {
@@ -49,7 +49,7 @@ export default {
       return Object.keys(this.thread.posts).length - 1;
     },
     user () {
-      return sourceData.users[this.thread.userId];
+      return this.$store.state.users[this.thread.userId];
     }
   }
 };
