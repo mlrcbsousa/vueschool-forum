@@ -5,20 +5,37 @@ import sourceData from '@/data';
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: sourceData,
+  state: {
+    ...sourceData,
+    authId: 'VXjpr2WHa8Ux4Bnggym8QFLdv5C3'
+  },
+
+  getters: {
+    authUser (state) {
+      return state.users[state.authId]
+    }
+  },
 
   actions: {
     createPost (context, post) {
       const postId = 'greatPost' + Math.random()
       post['.key'] = postId
+      post.userId = context.state.authId
 
       context.commit('setPost', { post, postId })
       context.commit('appendPostToThread', { postId, threadId: post.threadId })
       context.commit('appendPostToUser', { postId, userId: post.userId })
+    },
+
+    updateUser ({ commit }, user) {
+      commit('setUser', { userId: user['.key'], user })
     }
   },
 
   mutations: {
+    setUser (state, { user, userId }) {
+      Vue.set(state.users, userId, user)
+    },
     setPost (state, { post, postId }) {
       Vue.set(state.posts, postId, post)
     },
@@ -30,9 +47,5 @@ export default new Vuex.Store({
       const user = state.users[userId]
       Vue.set(user.posts, postId, postId)
     }
-  },
-
-  getters: {
-
   }
 })

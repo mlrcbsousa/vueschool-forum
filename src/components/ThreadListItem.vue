@@ -34,8 +34,7 @@
 </template>
 
 <script>
-;
-// import AppDate from './AppDate';
+import { countObjectProperties } from '@/utils';
 
 export default {
   // components: {
@@ -46,7 +45,7 @@ export default {
   },
   computed: {
     repliesCount () {
-      return Object.keys(this.thread.posts).length - 1;
+      return countObjectProperties(this.thread.posts) - 1;
     },
     user () {
       return this.$store.state.users[this.thread.userId];
