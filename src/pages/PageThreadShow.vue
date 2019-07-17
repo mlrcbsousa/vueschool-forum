@@ -24,12 +24,10 @@ export default {
   props: {
     id: { type: String, required: true }
   },
-  data () {
-    return {
-      thread: this.$store.state.threads[this.id]
-    };
-  },
   computed: {
+    thread () {
+      return this.$store.state.threads[this.id]
+    },
     posts () {
       const postIds = Object.values(this.thread.posts)
       return Object.values(this.$store.state.posts)
